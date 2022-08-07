@@ -4,8 +4,8 @@ const Employees = require('../Models/model.js');
 
 const route = express.Router();
 
-// Server Start Page
 
+// Server Start Page
 route.get('/',async(req,res)=>{
 
    res.send("Welcome to server")
@@ -13,7 +13,6 @@ route.get('/',async(req,res)=>{
 })
 
 //Get All Employees Data
-
 route.get('/Employees', async(req,res)=>{
 
     try{
@@ -28,12 +27,9 @@ route.get('/Employees', async(req,res)=>{
         console.log(err.message);
     }
 
-    
-
 })
 
 //Get Employee Data By ID
-
 route.get('/Employees/:id', async(req,res)=>{
 
     try{
@@ -78,32 +74,30 @@ route.get('/Search/:Name',async(req,res)=>{
  
      catch(err){
  
-         console.log(err.message);
+         alert(err.message);
      }
  })
  
 
 //Post request
-
 route.post('/addEmployee',async(req,res)=>{
 
-    const {Name,Email,MobileNum,Gender,Status,Profile,CompanyName} = req.body;
+    const {Name,Email,MobileNum,Gender,Status,Profile,CompanyName,JobRole} = req.body;
 
     try {
 
-        const newData = new Employees ({Name,Email,MobileNum,Gender,Status,Profile,CompanyName})
+        const newData = new Employees ({Name,Email,MobileNum,Gender,Status,Profile,CompanyName,JobRole})
 
         await newData.save();
 
         console.log('POST Request')
 
-        return res.json(await Employees.find())
+        return res.json(await Employees.find());
 
-        
     }
     catch (err) {
 
-        console.log(err.message);
+        return res.json(err);
     }
 })
 
