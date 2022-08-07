@@ -124,11 +124,11 @@ route.delete('/:id',async(req,res)=>{
 
 route.put('/Update/:id',async(req,res)=>{
 
-    const {Name,Email,MobileNum,Gender,Status,Profile,CompanyName} = req.body;
+    const {Name,Email,MobileNum,Gender,Status,Profile,CompanyName,JobRole} = req.body;
 
     try {
 
-        Employees.findByIdAndUpdate(req.params.id,{Name,Email,MobileNum,Gender,Status,Profile,CompanyName},(err,docs)=>{
+        Employees.findByIdAndUpdate(req.params.id,{Name,Email,MobileNum,Gender,Status,Profile,CompanyName,JobRole},(err,docs)=>{
 
             if(err)
             {
