@@ -25,9 +25,13 @@ const Employees = mongoose.Schema({
     },
     Profile:{
         type:String,
-        required:true
+        required:false
     },
     CompanyName:{
+        type:String,
+        required:true
+    },
+    JobRole:{
         type:String,
         required:true
     }
